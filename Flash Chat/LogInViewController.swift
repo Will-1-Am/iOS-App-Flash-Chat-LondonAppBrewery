@@ -24,7 +24,6 @@ class LogInViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-   
     @IBAction func logInPressed(_ sender: AnyObject) {
 
         SVProgressHUD.show()
@@ -39,13 +38,6 @@ class LogInViewController: UIViewController {
                 
                 self.performSegue(withIdentifier: "goToChat", sender: self)
             }
-            
-            
         }
-        
     }
-    
-
-
-    
 }  
