@@ -22,8 +22,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var messageTextfield: UITextField!
     @IBOutlet var messageTableView: UITableView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,18 +29,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageTableView.delegate = self
         messageTableView.dataSource = self
         
-        
-        
         //TODO: Set yourself as the delegate of the text field here:
         messageTextfield.delegate = self
-        
         
         //TODO: Set the tapGesture here:
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tableViewTapped))
         messageTableView.addGestureRecognizer(tapGesture)
-    
         
-
         //TODO: Register your MessageCell.xib file here:
         messageTableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "customMessageCell")
         
@@ -101,26 +94,20 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func configureTableView() {
         messageTableView.rowHeight = UITableView.automaticDimension
         messageTableView.estimatedRowHeight = 120.0
-        
     }
     
     
     ///////////////////////////////////////////
     
     //MARK:- TextField Delegate Methods
-    
-    
 
-    
     //TODO: Declare textFieldDidBeginEditing here:
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
         
         UIView.animate(withDuration: 0.5) {
             self.heightConstraint.constant = 308
             self.view.layoutIfNeeded()
         }
-        
     }
     
     
@@ -139,11 +126,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     //MARK: - Send & Recieve from Firebase
-    
-    
-    
-    
-    
     @IBAction func sendPressed(_ sender: AnyObject) {
         
         messageTextfield.endEditing(true)
@@ -191,13 +173,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.configureTableView()
             self.messageTableView.reloadData()
         }
-
     }
     
 
-    
-    
-    
     @IBAction func logOutPressed(_ sender: AnyObject) {
         
         //TODO: Log out the user and send them back to WelcomeViewController
@@ -209,7 +187,5 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         catch{
             print("Error - there was a problem signing out.")
         }
-        
     }
-
 }
